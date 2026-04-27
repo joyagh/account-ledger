@@ -53,6 +53,7 @@ public class Main {
                     break;
 
                 case "P":
+                    Payment();
                     break;
 
                 case "L":
@@ -110,6 +111,17 @@ public class Main {
     }
 
     // Make Payment method - Prompt for description, vendor, amount, save to csv
+    static void Payment(){
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        String description = "Payment";
+        System.out.println("Please Enter Payee: ");
+        String vendor = scanner.nextLine();
+        System.out.println("Please Enter Amount: ");
+        double amount = Double.parseDouble(scanner.nextLine());
+        amount = -amount;
+        writeToFile(date, time, description, vendor,amount);
+    }
 
     /* Show Ledger Method
 
