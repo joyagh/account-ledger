@@ -45,6 +45,7 @@ public class Main {
             String selection = scanner.nextLine().trim().toUpperCase();
             switch (selection) {
                 case "D":
+                    Deposit();
                     break;
 
                 case "P":
@@ -53,7 +54,7 @@ public class Main {
                 case "L":
                     //navigate to ledger menu
                     //call the method that displays the menu or view
-                    vewLedger();
+                    viewLedger();
                     break;
 
                 case "X":
@@ -93,6 +94,14 @@ public class Main {
 
     // Deposit method - Prompt for description, vendor, amount, save to csv
 
+    static void Deposit(){
+
+        System.out.println("Please Enter Deposit Amount: ");
+        scanner.nextLine();
+
+
+    }
+
     // Make Payment method - Prompt for description, vendor, amount, save to csv
 
     /* Show Ledger Method
@@ -104,7 +113,7 @@ public class Main {
      */
 
     //create Ledger menu
-    public static void vewLedger(){
+    public static void viewLedger(){
 
     }
 
