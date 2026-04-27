@@ -4,7 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
+
+import static java.time.LocalTime.now;
 
 public class Main {
     //scanner outside the main method so it can be used by other methods
@@ -14,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         // Scanner for input
         //test that we're able to access transactions.csv file
-          //  writeToFile();
+
         displayHomeMenu();
 
     }
@@ -76,7 +80,7 @@ public class Main {
 
     }
 
-    static void  writeToFile(){
+    static void  writeToFile(LocalDate date, LocalTime time, String description, String vendor, double amount){
 
         // try catch because something can possibly go
         // wrong when trying to access the file
@@ -84,7 +88,7 @@ public class Main {
         String filename = "transactions.csv";
 
         try(BufferedWriter bw = new BufferedWriter( new FileWriter(new File(filename),true))){
-           // bw.write("date|time|description|vendor|amount" + "\n");
+            bw.write(date + "|" + time+ "|" + description+ "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
 
 
         } catch (IOException e) {
@@ -95,11 +99,14 @@ public class Main {
     // Deposit method - Prompt for description, vendor, amount, save to csv
 
     static void Deposit(){
-
-        System.out.println("Please Enter Deposit Amount: ");
-        scanner.nextLine();
-
-
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        String description = "Deposit";
+        System.out.println("Please Enter Depositor's Name: ");
+        String vendor = scanner.nextLine();
+        System.out.println("Please Enter Amount: ");
+        double amount = Double.parseDouble(scanner.nextLine());
+        writeToFile(date, time, description, vendor,amount);
     }
 
     // Make Payment method - Prompt for description, vendor, amount, save to csv
