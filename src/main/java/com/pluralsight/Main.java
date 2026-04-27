@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -75,10 +76,19 @@ public class Main {
     }
 
     // Read transactions.csv
-    static void readFromFile(){
+    static ArrayList<Transaction> readFromFile(){
         ArrayList<Transaction> transactions = new ArrayList<>();
+        String fileName = "transactions.csv";
 
-        BufferedReader bufferedReader = new BufferedReader(readFromFile()
+        try( BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+            }
+
+        }catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+
 
         for(Transaction item : transactions){
             System.out.println(item);
@@ -89,19 +99,19 @@ public class Main {
 
     static void  writeToFile(LocalDate date, LocalTime time, String description, String vendor, double amount){
 
-        // try catch because something can possibly go
-        // wrong when trying to access the file
-        //ex - file could me misspelled, the file could not exists
-        String filename = "transactions.csv";
-
-        try(BufferedWriter bw = new BufferedWriter( new FileWriter(new File(filename),true))){
-            bw.write(date + "|" + time+ "|" + description+ "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//        // try catch because something can possibly go
+//        // wrong when trying to access the file
+//        //ex - file could me misspelled, the file could not exists
+//        String filename = "transactions.csv";
+//
+//        try(BufferedWriter bw = new BufferedWriter( new FileWriter(new File(filename),true))){
+//            bw.write(date + "|" + time+ "|" + description+ "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
+//
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     // Deposit method - Prompt for description, vendor, amount, save to csv
 
