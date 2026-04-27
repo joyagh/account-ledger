@@ -1,11 +1,9 @@
 package com.pluralsight;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static java.time.LocalTime.now;
@@ -78,6 +76,14 @@ public class Main {
 
     // Read transactions.csv
     static void readFromFile(){
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        BufferedReader bufferedReader = new BufferedReader(readFromFile()
+
+        for(Transaction item : transactions){
+            System.out.println(item);
+
+        }
 
     }
 
@@ -123,20 +129,21 @@ public class Main {
         writeToFile(date, time, description, vendor,amount);
     }
 
-    /* Show Ledger Method
-
-    A - All - displayAll()
-    D - Deposits - displayDeposits()
-    P - Payments - displayPayments()
-    R - Navigate to R
-     */
-
     //create Ledger menu
     public static void viewLedger(){
+
 
     }
 
    //  R -Reports - displayReports()
 
     //reports m
+
+       /* Show Ledger Method
+
+    A - All - displayAll()
+    D - Deposits - displayDeposits()
+    P - Payments - displayPayments()
+    R - Navigate to R
+     */
 }
