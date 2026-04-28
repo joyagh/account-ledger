@@ -1,13 +1,10 @@
 package com.pluralsight;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import static java.time.LocalTime.now;
 
 public class Main {
     //scanner outside the main method so it can be used by other methods
@@ -17,7 +14,6 @@ public class Main {
     public static void main(String[] args) {
         // Scanner for input
         //test that we're able to access transactions.csv file
-
         displayHomeMenu();
 
     }
@@ -58,7 +54,7 @@ public class Main {
                 case "L":
                     //navigate to ledger menu
                     //call the method that displays the menu or view
-                    viewLedger();
+//                    viewLedger();
                     break;
 
                 case "X":
@@ -86,32 +82,28 @@ public class Main {
                 String[] parts = line.split("\\|");
             }
 
-        }catch (FileNotFoundException e) {
+        }catch(IOException e) {
             throw new RuntimeException(e);
-
-
-        for(Transaction item : transactions){
-            System.out.println(item);
-
         }
+        return transactions;
 
     }
 
     static void  writeToFile(LocalDate date, LocalTime time, String description, String vendor, double amount){
 
-//        // try catch because something can possibly go
-//        // wrong when trying to access the file
-//        //ex - file could me misspelled, the file could not exists
-//        String filename = "transactions.csv";
-//
-//        try(BufferedWriter bw = new BufferedWriter( new FileWriter(new File(filename),true))){
-//            bw.write(date + "|" + time+ "|" + description+ "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
-//
-//
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+        // try catch because something can possibly go
+        // wrong when trying to access the file
+        //ex - file could me misspelled, the file could not exists
+        String filename = "transactions.csv";
+
+        try(BufferedWriter bw = new BufferedWriter( new FileWriter(new File(filename),true))){
+            bw.write(date + "|" + time+ "|" + description+ "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // Deposit method - Prompt for description, vendor, amount, save to csv
 
@@ -140,7 +132,14 @@ public class Main {
     }
 
     //create Ledger menu
-    public static void viewLedger(){
+//    public static void viewLedger(){
+//
+//            for(Transaction item : transactions){
+//                System.out.println(item);
+//
+//            }
+//
+//        }
 
 
     }
@@ -156,4 +155,5 @@ public class Main {
     P - Payments - displayPayments()
     R - Navigate to R
      */
-}
+
+
