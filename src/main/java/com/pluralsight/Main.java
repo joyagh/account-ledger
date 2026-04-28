@@ -138,7 +138,7 @@ public class Main {
                         D- Deposits
                         P - Payments
                         R- Navigate to Reports
-                        X- Home
+                        H- Home
                     
                     """);
 
@@ -153,7 +153,7 @@ public class Main {
                     break;
 
                 case "P":
-//                        displayPayment();
+                        displayPayments();
                     break;
 
                 case "R":
@@ -161,7 +161,7 @@ public class Main {
                     break;
 
                 case "H":
-                    isRunning = false;
+                    displayHomeMenu();
 
                     break;
                 default:
@@ -193,9 +193,19 @@ public class Main {
             }
 
         }
-        // display deposits method -- if staement in loop?
+
         // display payments method -- same here?
         // reports method
+    }
+    public static void displayPayments(){
+        ArrayList<Transaction> transactions = readFromFile();
+
+        for (Transaction item : transactions) {
+            if (item.getAmount() < 0) {
+                System.out.println(item);
+            }
+
+        }
     }
 }
 
