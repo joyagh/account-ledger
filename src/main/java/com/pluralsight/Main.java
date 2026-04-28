@@ -234,6 +234,10 @@ public class Main {
 
             }
         }
+        //search month to date
+    // search previous month
+    // search year to date
+    // search previous year
         public static void searchVendor(){
         scanner.nextLine(); // clearing buffer
             System.out.println("Please enter vendor");
