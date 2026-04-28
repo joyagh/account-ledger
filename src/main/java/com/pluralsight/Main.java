@@ -106,7 +106,7 @@ public class Main {
         String filename = "transactions.csv";
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filename), true))) {
-            bw.write(date + "|" + time + "|" + description + "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
+            bw.write(date + "|" + time + "|" + description + "|" + vendor + "|" +  String.format("%.2f", amount) + "\n");
 
 
         } catch (IOException e) {
