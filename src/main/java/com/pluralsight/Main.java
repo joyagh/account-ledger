@@ -128,14 +128,61 @@ public class Main {
         R - Navigae to reports
          */
 
-            for (Transaction item : transactions) {
+
+            while (isRunning) {
+
+
+                System.out.println("""
+                    Welcome to your Acct Ledger! Choose from the following
+                        A - All
+                        D- Deposits
+                        P - Payments
+                        R- Navigate to Reports
+                        X- Home
+                    
+                    """);
+
+                String input = scanner.nextLine().trim().toUpperCase();
+                switch (input) {
+                    case "A":
+//                        displayAll();
+                        break;
+
+                    case "D":
+//                        displayDeposits();
+                        break;
+
+                    case "P":
+//                        displayPayment();
+                        break;
+
+                    case "R":
+                        // Reports()
+                        break;
+
+                    case "H":
+                        isRunning = false;
+
+                        break;
+                    default:
+                        System.out.println("Sorry invalid option");
+
+                }
+
+            }
+
+    //display all method
+
+        for (Transaction item : transactions) {
                 System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
 
             }
-            // reports method
+    // display deposits method -- if staement in loop?
+        // display payments method -- same here?
 
 
         }
+    // reports method
     }
 
 
