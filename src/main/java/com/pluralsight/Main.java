@@ -76,8 +76,11 @@ public class Main {
         ArrayList<Transaction> transactions = new ArrayList<>();
         String fileName = "transactions.csv";
 
+
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             String line;
+            bufferedReader.readLine();
+
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
                 LocalDate date = LocalDate.parse((parts[0]));
