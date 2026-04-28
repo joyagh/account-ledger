@@ -54,7 +54,6 @@ public class Main {
         }
     }
 
-    // Read transactions.csv
     static ArrayList<Transaction> readFromFile() {
         ArrayList<Transaction> transactions = new ArrayList<>();
         String fileName = "transactions.csv";
