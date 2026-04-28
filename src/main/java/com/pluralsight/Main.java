@@ -2,6 +2,7 @@ package com.pluralsight;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.Year;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -214,7 +215,7 @@ public class Main {
                         break;
 
                     case 3 :
-                        // searchYearToDate();
+                         searchYearToDate();
                         break;
 
                     case 4:
@@ -271,21 +272,17 @@ public class Main {
     }
 
     // search year to date
-//    public static void searchVendor(){
-//        scanner.nextLine(); // clearing buffer
-//        System.out.println("Please enter vendor");
-//        String vendorSearch = scanner.nextLine();
-//
-//        ArrayList<Transaction> transactions = readFromFile();
-//        for(Transaction item: transactions ){
-//            if(item.getVendor().contains(vendorSearch)){
-//                System.out.println(item);
-//
-//            }
-//        }
-//
-//
-//    }
+    public static void searchYearToDate(){
+        LocalDate yearStart = Year.now().atDay(1);
+        ArrayList<Transaction> transactions = readFromFile();
+        for(Transaction item: transactions ){
+            if (yearStart.isBefore(LocalDate.now())){
+                System.out.println(item);
+            }
+        }
+
+
+    }
 
     // search previous year
 //    public static void searchVendor(){
