@@ -93,7 +93,6 @@ public class Main {
         }
     }
 
-
     static void Deposit() {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
@@ -117,20 +116,9 @@ public class Main {
         writeToFile(date, time, description, vendor, amount);
     }
 
-
     public static void viewLedger() {
 
-
-        /*
-        A - All
-        D - Deposits
-        P - Payments
-        R - Navigae to reports
-         */
-
-
         while (isRunning) {
-
 
             System.out.println("""
                     Welcome to your Acct Ledger! Choose from the following
@@ -178,12 +166,8 @@ public class Main {
 
         for (Transaction item : transactions) {
             System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
-
         }
-
-
     }
-
     public static void displayDeposits() {
         ArrayList<Transaction> transactions = readFromFile();
 
@@ -191,11 +175,7 @@ public class Main {
             if (item.getAmount()> 0) {
                 System.out.println(item);
             }
-
         }
-
-        // display payments method -- same here?
-        // reports method
     }
     public static void displayPayments(){
         ArrayList<Transaction> transactions = readFromFile();
@@ -204,7 +184,6 @@ public class Main {
             if (item.getAmount() < 0) {
                 System.out.println(item);
             }
-
         }
     }
 }
