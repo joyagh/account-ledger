@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Main {
     //scanner outside the main method so it can be used by other methods
-   static Scanner scanner = new Scanner(System.in);
-   static boolean isRunning = true;
+    static Scanner scanner = new Scanner(System.in);
+    static boolean isRunning = true;
 
     public static void main(String[] args) {
         // Scanner for input
@@ -23,13 +23,13 @@ public class Main {
     /* homeScreen -- switch in while loop?
 
      */
-    static void displayHomeMenu(){
+    static void displayHomeMenu() {
 
         //can create a while loop so that if a user makes an error the
         //menu reappears until they make a proper selection
         //or exit the app
 
-        while(isRunning) {
+        while (isRunning) {
 
 
             System.out.println("""
@@ -67,37 +67,37 @@ public class Main {
 
             } // end of the switch statement
 
-       } //end of the while loop
+        } //end of the while loop
 
     }
 
     // Read transactions.csv
-    static ArrayList<Transaction> readFromFile(){
+    static ArrayList<Transaction> readFromFile() {
         ArrayList<Transaction> transactions = new ArrayList<>();
         String fileName = "transactions.csv";
 
-        try( BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
             }
 
-        }catch(IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         return transactions;
 
     }
 
-    static void  writeToFile(LocalDate date, LocalTime time, String description, String vendor, double amount){
+    static void writeToFile(LocalDate date, LocalTime time, String description, String vendor, double amount) {
 
         // try catch because something can possibly go
         // wrong when trying to access the file
         //ex - file could me misspelled, the file could not exists
         String filename = "transactions.csv";
 
-        try(BufferedWriter bw = new BufferedWriter( new FileWriter(new File(filename),true))){
-            bw.write(date + "|" + time+ "|" + description+ "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filename), true))) {
+            bw.write(date + "|" + time + "|" + description + "|" + vendor + "|" + String.format("$%.2f", amount) + "\n");
 
 
         } catch (IOException e) {
@@ -107,7 +107,7 @@ public class Main {
 
     // Deposit method - Prompt for description, vendor, amount, save to csv
 
-    static void Deposit(){
+    static void Deposit() {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
         String description = "Deposit";
@@ -115,11 +115,11 @@ public class Main {
         String vendor = scanner.nextLine();
         System.out.println("Please Enter Amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
-        writeToFile(date, time, description, vendor,amount);
+        writeToFile(date, time, description, vendor, amount);
     }
 
     // Make Payment method - Prompt for description, vendor, amount, save to csv
-    static void Payment(){
+    static void Payment() {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
         String description = "Payment";
@@ -128,20 +128,19 @@ public class Main {
         System.out.println("Please Enter Amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
         amount = -amount;
-        writeToFile(date, time, description, vendor,amount);
+        writeToFile(date, time, description, vendor, amount);
     }
 
     //create Ledger menu
-//    public static void viewLedger(){
-//
-//            for(Transaction item : transactions){
-//                System.out.println(item);
-//
-//            }
-//
-//        }
+    public static void viewLedger() {
+        ArrayList<Transaction> transactions = readFromFile();
 
+            for (Transaction item : transactions) {
+                System.out.println(item);
 
+            }
+
+        }
     }
 
    //  R -Reports - displayReports()
