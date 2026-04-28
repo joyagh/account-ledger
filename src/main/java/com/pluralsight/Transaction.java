@@ -12,10 +12,7 @@ public class Transaction {
     String vendor;
     double amount;
 
-    // Transaction Constructor
-    public Transaction(){
 
-    }
 
     public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
         this.date = date;
