@@ -205,19 +205,19 @@ public class Main {
                 int choice = scanner.nextInt();
                 switch (choice) {
                     case 1 :
-                        //searchMonth
+                        searchMonthToDate();
                         break;
 
                     case 2 :
-                        // searchPreviousMonth
+                        // searchPreviousMonth();
                         break;
 
                     case 3 :
-                        // searchYear
+                        // searchYearToDate();
                         break;
 
                     case 4:
-                        // searchPreviousYear
+                        // searchPreviousYear();
                         break;
 
                     case 5 :
@@ -235,10 +235,70 @@ public class Main {
             }
         }
         //search month to date
+        public static void searchMonthToDate(){
+            ArrayList<Transaction> transactions = readFromFile();
+            for(Transaction item: transactions ){
+                if(item.getDate().isBefore(LocalDate.now())){
+                    System.out.println(item);
+
+                }
+            }
+
+
+        }
+
     // search previous month
+//    public static void searchVendor(){
+//        scanner.nextLine(); // clearing buffer
+//        System.out.println("Please enter vendor");
+//        String vendorSearch = scanner.nextLine();
+//
+//        ArrayList<Transaction> transactions = readFromFile();
+//        for(Transaction item: transactions ){
+//            if(item.getVendor().contains(vendorSearch)){
+//                System.out.println(item);
+//
+//            }
+//        }
+//
+//
+//    }
+
     // search year to date
+//    public static void searchVendor(){
+//        scanner.nextLine(); // clearing buffer
+//        System.out.println("Please enter vendor");
+//        String vendorSearch = scanner.nextLine();
+//
+//        ArrayList<Transaction> transactions = readFromFile();
+//        for(Transaction item: transactions ){
+//            if(item.getVendor().contains(vendorSearch)){
+//                System.out.println(item);
+//
+//            }
+//        }
+//
+//
+//    }
+
     // search previous year
-        public static void searchVendor(){
+//    public static void searchVendor(){
+//        scanner.nextLine(); // clearing buffer
+//        System.out.println("Please enter vendor");
+//        String vendorSearch = scanner.nextLine();
+//
+//        ArrayList<Transaction> transactions = readFromFile();
+//        for(Transaction item: transactions ){
+//            if(item.getVendor().contains(vendorSearch)){
+//                System.out.println(item);
+//
+//            }
+//        }
+//
+//
+//    }
+
+    public static void searchVendor(){
         scanner.nextLine(); // clearing buffer
             System.out.println("Please enter vendor");
            String vendorSearch = scanner.nextLine();
