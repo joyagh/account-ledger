@@ -1,5 +1,4 @@
 package com.pluralsight;
-
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -7,27 +6,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    //scanner outside the main method so it can be used by other methods
     static Scanner scanner = new Scanner(System.in);
     static boolean isRunning = true;
 
     public static void main(String[] args) {
-        // Scanner for input
-        //test that we're able to access transactions.csv file
         displayHomeMenu();
-
     }
 
-
-    // Home Screen Menu
-    /* homeScreen -- switch in while loop?
-
-     */
     static void displayHomeMenu() {
-
-        //can create a while loop so that if a user makes an error the
-        //menu reappears until they make a proper selection
-        //or exit the app
 
         while (isRunning) {
 
@@ -52,8 +38,6 @@ public class Main {
                     break;
 
                 case "L":
-                    //navigate to ledger menu
-                    //call the method that displays the menu or view
                     viewLedger();
                     break;
 
@@ -65,10 +49,9 @@ public class Main {
                 default:
                     System.out.println("Sorry invalid option");
 
-            } // end of the switch statement
+            }
 
-        } //end of the while loop
-
+        }
     }
 
     // Read transactions.csv
@@ -100,9 +83,6 @@ public class Main {
 
     static void writeToFile(LocalDate date, LocalTime time, String description, String vendor, double amount) {
 
-        // try catch because something can possibly go
-        // wrong when trying to access the file
-        //ex - file could me misspelled, the file could not exists
         String filename = "transactions.csv";
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filename), true))) {
@@ -114,7 +94,6 @@ public class Main {
         }
     }
 
-    // Deposit method - Prompt for description, vendor, amount, save to csv
 
     static void Deposit() {
         LocalDate date = LocalDate.now();
@@ -127,7 +106,6 @@ public class Main {
         writeToFile(date, time, description, vendor, amount);
     }
 
-    // Make Payment method - Prompt for description, vendor, amount, save to csv
     static void Payment() {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
@@ -140,7 +118,7 @@ public class Main {
         writeToFile(date, time, description, vendor, amount);
     }
 
-    //create Ledger menu
+
     public static void viewLedger() {
         ArrayList<Transaction> transactions = readFromFile();
 
@@ -152,16 +130,6 @@ public class Main {
         }
     }
 
-   //  R -Reports - displayReports()
 
-    //reports m
-
-       /* Show Ledger Method
-
-    A - All - displayAll()
-    D - Deposits - displayDeposits()
-    P - Payments - displayPayments()
-    R - Navigate to R
-     */
 
 
