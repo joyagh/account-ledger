@@ -333,11 +333,13 @@ public class Main {
         String vendor = scanner.nextLine();
 
         System.out.println("Amount: ");
-        double amount = Double.parseDouble(scanner.nextLine());// isEmpty()?
+        String amount = scanner.nextLine();// isEmpty()?
 
-
+        ArrayList<Transaction> transactions = readFromFile();
     }
 }
+
+
 
 
 
