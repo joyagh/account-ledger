@@ -330,10 +330,10 @@ public class Main {
         String description = scanner.nextLine();
 
         System.out.println("Vendor: ");
-       String vendor = scanner.nextLine();
+        String vendor = scanner.nextLine();
 
         System.out.println("Amount: ");
-       double amount = Double.parseDouble(scanner.nextLine()));
+        double amount = Double.parseDouble(scanner.nextLine());// isEmpty()?
 
 
     }
