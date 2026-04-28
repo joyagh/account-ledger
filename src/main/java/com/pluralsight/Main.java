@@ -70,7 +70,7 @@ public class Main {
                 String description = parts[2];
                 String vendor = parts[3];
                 double amount = Double.parseDouble(parts[4]);
-                transactions.add(new Transaction(date,time,description,vendor,amount));
+                transactions.add(new Transaction(date, time, description, vendor, amount));
             }
 
         } catch (IOException e) {
@@ -85,7 +85,7 @@ public class Main {
         String filename = "transactions.csv";
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(filename), true))) {
-            bw.write(date + "|" + time + "|" + description + "|" + vendor + "|" +  String.format("%.2f", amount) + "\n");
+            bw.write(date + "|" + time + "|" + description + "|" + vendor + "|" + String.format("%.2f", amount) + "\n");
 
 
         } catch (IOException e) {
@@ -119,7 +119,7 @@ public class Main {
 
 
     public static void viewLedger() {
-        ArrayList<Transaction> transactions = readFromFile();
+
 
         /*
         A - All
@@ -129,10 +129,10 @@ public class Main {
          */
 
 
-            while (isRunning) {
+        while (isRunning) {
 
 
-                System.out.println("""
+            System.out.println("""
                     Welcome to your Acct Ledger! Choose from the following
                         A - All
                         D- Deposits
@@ -142,47 +142,50 @@ public class Main {
                     
                     """);
 
-                String input = scanner.nextLine().trim().toUpperCase();
-                switch (input) {
-                    case "A":
-//                        displayAll();
-                        break;
+            String input = scanner.nextLine().trim().toUpperCase();
+            switch (input) {
+                case "A":
+                        displayAll();
+                    break;
 
-                    case "D":
+                case "D":
 //                        displayDeposits();
-                        break;
+                    break;
 
-                    case "P":
+                case "P":
 //                        displayPayment();
-                        break;
+                    break;
 
-                    case "R":
-                        // Reports()
-                        break;
+                case "R":
+                    // Reports()
+                    break;
 
-                    case "H":
-                        isRunning = false;
+                case "H":
+                    isRunning = false;
 
-                        break;
-                    default:
-                        System.out.println("Sorry invalid option");
-
-                }
+                    break;
+                default:
+                    System.out.println("Sorry invalid option");
 
             }
 
-    //display all method
+        }
+    }
+        //display all method
+        public static void displayAll() {
+            ArrayList<Transaction> transactions = readFromFile();
 
-        for (Transaction item : transactions) {
+            for (Transaction item : transactions) {
                 System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
 
             }
-    // display deposits method -- if staement in loop?
-        // display payments method -- same here?
+
 
 
         }
-    // reports method
+    // display deposits method -- if staement in loop?
+    // display payments method -- same here?
+        // reports method
     }
 
 
