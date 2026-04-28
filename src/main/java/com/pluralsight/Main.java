@@ -85,6 +85,7 @@ public class Main {
                 String description = parts[2];
                 String vendor = parts[3];
                 double amount = Double.parseDouble(parts[4]);
+                transactions.add(new Transaction(date,time,description,vendor,amount));
             }
 
         } catch (IOException e) {
