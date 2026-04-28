@@ -145,7 +145,7 @@ public class Main {
                     break;
 
                 case "R":
-                    // Reports()
+                     Reports();
                     break;
 
                 case "H":
@@ -201,28 +201,30 @@ public class Main {
                     
                     """);
 
-                String choice = scanner.nextLine().trim().toUpperCase();
+
+                int choice = scanner.nextInt();
                 switch (choice) {
-                    case "1" :
+                    case 1 :
+                        searchVendor();
 
                         break;
 
-                    case "2" :
+                    case 2 :
                         break;
 
-                    case "3":
-
-                        break;
-
-                    case "4":
+                    case 3 :
 
                         break;
 
-                    case "5":
+                    case 4:
 
                         break;
 
-                    case "0":
+                    case 5 :
+
+                        break;
+
+                    case 0 :
 
                         break;
                     default:
@@ -235,6 +237,14 @@ public class Main {
         public static void searchVendor(){
             System.out.println("Please enter vendor");
            String vendorSearch = scanner.nextLine();
+
+            ArrayList<Transaction> transactions = readFromFile();
+            for(Transaction item: transactions ){
+                if(item.getVendor().contains(vendorSearch)){
+                    System.out.println(item);
+
+                }
+            }
 
 
         }
