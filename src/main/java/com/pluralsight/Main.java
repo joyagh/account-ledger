@@ -150,7 +150,6 @@ public class Main {
 
                 case "H":
                     displayHomeMenu();
-
                     break;
                 default:
                     System.out.println("Sorry invalid option");
@@ -186,7 +185,53 @@ public class Main {
             }
         }
     }
-}
+
+    public static void Reports(){
+
+            while (isRunning) {
+
+                System.out.println("""
+                    Welcome to your Acct Ledger! Choose from the following
+                        1 - Month to Date
+                        2 - Previous Month
+                        3 - Year to Date
+                        4 - Previous Year
+                        5 - Search by Vendor
+                        6 - Back
+                    
+                    """);
+
+                String choice = scanner.nextLine().trim().toUpperCase();
+                switch (choice) {
+                    case "1" :
+
+                        break;
+
+                    case "2":
+
+                        break;
+
+                    case "3":
+
+                        break;
+
+                    case "4":
+
+                        break;
+
+                    case "5":
+
+                        break;
+                    default:
+                        System.out.println("Sorry invalid option");
+
+                }
+
+            }
+        }
+
+    }
+
 
 
 
