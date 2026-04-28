@@ -236,9 +236,10 @@ public class Main {
         }
         //search month to date
         public static void searchMonthToDate(){
+        LocalDate today = LocalDate.now();
             ArrayList<Transaction> transactions = readFromFile();
             for(Transaction item: transactions ){
-                if(item.getDate().isBefore(LocalDate.now())){
+                if(item.getDate().getMonth() == today.getMonth()){
                     System.out.println(item);
 
                 }
@@ -249,13 +250,9 @@ public class Main {
 
     // search previous month
 //    public static void searchVendor(){
-//        scanner.nextLine(); // clearing buffer
-//        System.out.println("Please enter vendor");
-//        String vendorSearch = scanner.nextLine();
-//
 //        ArrayList<Transaction> transactions = readFromFile();
 //        for(Transaction item: transactions ){
-//            if(item.getVendor().contains(vendorSearch)){
+//            if(item.getDate()){
 //                System.out.println(item);
 //
 //            }
