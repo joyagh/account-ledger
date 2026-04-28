@@ -54,7 +54,7 @@ public class Main {
                 case "L":
                     //navigate to ledger menu
                     //call the method that displays the menu or view
-//                    viewLedger();
+                    viewLedger();
                     break;
 
                 case "X":
@@ -80,6 +80,11 @@ public class Main {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] parts = line.split("\\|");
+                LocalDate date = LocalDate.parse((parts[0]));
+                LocalTime time = LocalTime.parse(parts[1]);
+                String description = parts[2];
+                String vendor = parts[3];
+                double amount = Double.parseDouble(parts[4]);
             }
 
         } catch (IOException e) {
@@ -136,7 +141,7 @@ public class Main {
         ArrayList<Transaction> transactions = readFromFile();
 
             for (Transaction item : transactions) {
-                System.out.println(item);
+                System.out.println();
 
             }
 
