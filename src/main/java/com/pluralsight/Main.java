@@ -2,6 +2,7 @@ package com.pluralsight;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -209,7 +210,7 @@ public class Main {
                         break;
 
                     case 2 :
-                        // searchPreviousMonth();
+                         searchPreviousMonth();
                         break;
 
                     case 3 :
@@ -249,17 +250,25 @@ public class Main {
         }
 
     // search previous month
-//    public static void searchVendor(){
-//        ArrayList<Transaction> transactions = readFromFile();
-//        for(Transaction item: transactions ){
-//            if(item.getDate()){
-//                System.out.println(item);
-//
-//            }
-//        }
-//
-//
-//    }
+    public static void searchPreviousMonth(){
+
+        YearMonth lastMonth = YearMonth.now().minusMonths(1);
+        boolean found = false;
+
+        ArrayList<Transaction> transactions = readFromFile();
+        for(Transaction item: transactions ){
+            if(YearMonth.from(item.getDate()).equals(lastMonth)) {
+
+                System.out.println(item);
+                found = true;
+
+            }
+            } if (!found){
+            System.out.println("No previous months to display");
+        }
+
+
+    }
 
     // search year to date
 //    public static void searchVendor(){
