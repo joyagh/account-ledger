@@ -205,27 +205,27 @@ public class Main {
                 int choice = scanner.nextInt();
                 switch (choice) {
                     case 1 :
-                        searchVendor();
-
+                        //searchMonth
                         break;
 
                     case 2 :
+                        // searchPreviousMonth
                         break;
 
                     case 3 :
-
+                        // searchYear
                         break;
 
                     case 4:
-
+                        // searchPreviousYear
                         break;
 
                     case 5 :
-
+                        searchVendor();
                         break;
 
                     case 0 :
-
+                        //Back
                         break;
                     default:
                         System.out.println("Sorry invalid option");
@@ -235,6 +235,7 @@ public class Main {
             }
         }
         public static void searchVendor(){
+        scanner.nextLine(); // clearing buffer
             System.out.println("Please enter vendor");
            String vendorSearch = scanner.nextLine();
 
