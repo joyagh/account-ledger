@@ -121,10 +121,19 @@ public class Main {
     public static void viewLedger() {
         ArrayList<Transaction> transactions = readFromFile();
 
+        /*
+        A - All
+        D - Deposits
+        P - Payments
+        R - Navigae to reports
+         */
+
             for (Transaction item : transactions) {
                 System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
 
             }
+            // reports method
+
 
         }
     }
