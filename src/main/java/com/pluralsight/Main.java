@@ -145,11 +145,11 @@ public class Main {
             String input = scanner.nextLine().trim().toUpperCase();
             switch (input) {
                 case "A":
-                        displayAll();
+                    displayAll();
                     break;
 
                 case "D":
-//                        displayDeposits();
+                        displayDeposits();
                     break;
 
                 case "P":
@@ -171,22 +171,33 @@ public class Main {
 
         }
     }
-        //display all method
-        public static void displayAll() {
-            ArrayList<Transaction> transactions = readFromFile();
 
-            for (Transaction item : transactions) {
-                System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
+    //display all method
+    public static void displayAll() {
+        ArrayList<Transaction> transactions = readFromFile();
 
-            }
-
-
+        for (Transaction item : transactions) {
+            System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
 
         }
-    // display deposits method -- if staement in loop?
-    // display payments method -- same here?
+
+
+    }
+
+    public static void displayDeposits() {
+        ArrayList<Transaction> transactions = readFromFile();
+
+        for (Transaction item : transactions) {
+            if (item.getAmount()> 0) {
+                System.out.println(item);
+            }
+
+        }
+        // display deposits method -- if staement in loop?
+        // display payments method -- same here?
         // reports method
     }
+}
 
 
 
