@@ -276,7 +276,7 @@ public class Main {
         LocalDate yearStart = Year.now().atDay(1);
         ArrayList<Transaction> transactions = readFromFile();
         for(Transaction item: transactions ){
-            if (yearStart.isBefore(LocalDate.now())){
+            if (item.getDate().isAfter(yearStart)){
                 System.out.println(item);
             }
         }
