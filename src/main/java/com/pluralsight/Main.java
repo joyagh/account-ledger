@@ -139,15 +139,15 @@ public class Main {
                     break;
 
                 case "D":
-                        displayDeposits();
+                    displayDeposits();
                     break;
 
                 case "P":
-                        displayPayments();
+                    displayPayments();
                     break;
 
                 case "R":
-                     reports();
+                    reports();
                     break;
 
                 case "H":
@@ -169,16 +169,18 @@ public class Main {
             System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
         }
     }
+
     public static void displayDeposits() {
         ArrayList<Transaction> transactions = readFromFile();
 
         for (Transaction item : transactions) {
-            if (item.getAmount()> 0) {
+            if (item.getAmount() > 0) {
                 System.out.println(item);
             }
         }
     }
-    public static void displayPayments(){
+
+    public static void displayPayments() {
         ArrayList<Transaction> transactions = readFromFile();
 
         for (Transaction item : transactions) {
@@ -188,96 +190,98 @@ public class Main {
         }
     }
 
-    public static void reports(){
+    public static void reports() {
 
-            while (isRunning) {
+        while (isRunning) {
 
-                System.out.println("""
+            System.out.println("""
                     Welcome to your Acct Ledger! Choose from the following
                         1 - Month to Date
                         2 - Previous Month
                         3 - Year to Date
                         4 - Previous Year
                         5 - Search by Vendor
+                        6 - Custom Search
                         0 - Back
                     
                     """);
 
 
-                int choice = scanner.nextInt();
-                scanner.nextLine();
-                switch (choice) {
-                    case 1 :
-                        searchMonthToDate();
-                        break;
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 1:
+                    searchMonthToDate();
+                    break;
 
-                    case 2 :
-                         searchPreviousMonth();
-                        break;
+                case 2:
+                    searchPreviousMonth();
+                    break;
 
-                    case 3 :
-                         searchYearToDate();
-                        break;
+                case 3:
+                    searchYearToDate();
+                    break;
 
-                    case 4:
-                         searchPreviousYear();
-                        break;
+                case 4:
+                    searchPreviousYear();
+                    break;
 
-                    case 5 :
-                        searchVendor();
-                        break;
+                case 5:
+                    searchVendor();
+                    break;
+                case 6:
+                    //customSearch();
 
-                    case 0 :
-                        viewLedger();
-                        break;
-                    default:
-                        System.out.println("Sorry invalid option");
-
-                }
+                case 0:
+                    viewLedger();
+                    break;
+                default:
+                    System.out.println("Sorry invalid option");
 
             }
+
         }
-        //search month to date
-        public static void searchMonthToDate(){
+    }
+
+    //search month to date
+    public static void searchMonthToDate() {
         LocalDate today = LocalDate.now();
-            ArrayList<Transaction> transactions = readFromFile();
-            for(Transaction item: transactions ){
-                if(item.getDate().getMonth() == today.getMonth()){
-                    System.out.println(item);
+        ArrayList<Transaction> transactions = readFromFile();
+        for (Transaction item : transactions) {
+            if (item.getDate().getMonth() == today.getMonth()) {
+                System.out.println(item);
 
-                }
             }
-
-
         }
+    }
 
     // search previous month
-    public static void searchPreviousMonth(){
+    public static void searchPreviousMonth() {
 
         YearMonth lastMonth = YearMonth.now().minusMonths(1);
         boolean found = false;
 
         ArrayList<Transaction> transactions = readFromFile();
-        for(Transaction item: transactions ){
-            if(YearMonth.from(item.getDate()).equals(lastMonth)) {
+        for (Transaction item : transactions) {
+            if (YearMonth.from(item.getDate()).equals(lastMonth)) {
 
                 System.out.println(item);
                 found = true;
 
             }
-            } if (!found){
+        }
+        if (!found) {
             System.out.println("No previous months to display");
         }
-
 
     }
 
     // search year to date
-    public static void searchYearToDate(){
+    public static void searchYearToDate() {
         LocalDate yearStart = Year.now().atDay(1);
         ArrayList<Transaction> transactions = readFromFile();
-        for(Transaction item: transactions ){
-            if (!item.getDate().isBefore(yearStart)){
+        for (Transaction item : transactions) {
+            if (!item.getDate().isBefore(yearStart)) {
                 System.out.println(item);
             }
         }
@@ -286,11 +290,11 @@ public class Main {
     }
 
     // search previous year
-    public static void searchPreviousYear(){
+    public static void searchPreviousYear() {
         LocalDate yearStart = Year.now().atDay(1);
         ArrayList<Transaction> transactions = readFromFile();
-        for(Transaction item: transactions ){
-            if (item.getDate().isBefore(yearStart)){
+        for (Transaction item : transactions) {
+            if (item.getDate().isBefore(yearStart)) {
                 System.out.println(item);
             }
         }
@@ -298,23 +302,42 @@ public class Main {
 
     }
 
-    public static void searchVendor(){
+    public static void searchVendor() {
         scanner.nextLine(); // clearing buffer
-            System.out.println("Please enter vendor");
-           String vendorSearch = scanner.nextLine();
+        System.out.println("Please enter vendor");
+        String vendorSearch = scanner.nextLine();
 
-            ArrayList<Transaction> transactions = readFromFile();
-            for(Transaction item: transactions ){
-                if(item.getVendor().contains(vendorSearch)){
-                    System.out.println(item);
+        ArrayList<Transaction> transactions = readFromFile();
+        for (Transaction item : transactions) {
+            if (item.getVendor().contains(vendorSearch)) {
+                System.out.println(item);
 
-                }
             }
-
-
         }
 
+
     }
+
+
+    public static void customSearch() {
+        System.out.println("Start Date: ");
+        String startDate = scanner.nextLine();
+
+        System.out.println("End Date: ");
+        String endDate = scanner.nextLine();
+
+        System.out.println("Description: ");
+        String description = scanner.nextLine();
+
+        System.out.println("Vendor: ");
+       String vendor = scanner.nextLine();
+
+        System.out.println("Amount: ");
+       double amount = Double.parseDouble(scanner.nextLine()));
+
+
+    }
+}
 
 
 
