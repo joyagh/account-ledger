@@ -219,7 +219,7 @@ public class Main {
                         break;
 
                     case 4:
-                        // searchPreviousYear();
+                         searchPreviousYear();
                         break;
 
                     case 5 :
@@ -285,21 +285,17 @@ public class Main {
     }
 
     // search previous year
-//    public static void searchVendor(){
-//        scanner.nextLine(); // clearing buffer
-//        System.out.println("Please enter vendor");
-//        String vendorSearch = scanner.nextLine();
-//
-//        ArrayList<Transaction> transactions = readFromFile();
-//        for(Transaction item: transactions ){
-//            if(item.getVendor().contains(vendorSearch)){
-//                System.out.println(item);
-//
-//            }
-//        }
-//
-//
-//    }
+    public static void searchPreviousYear(){
+        LocalDate yearStart = Year.now().atDay(1);
+        ArrayList<Transaction> transactions = readFromFile();
+        for(Transaction item: transactions ){
+            if (item.getDate().isBefore(yearStart)){
+                System.out.println(item);
+            }
+        }
+
+
+    }
 
     public static void searchVendor(){
         scanner.nextLine(); // clearing buffer
