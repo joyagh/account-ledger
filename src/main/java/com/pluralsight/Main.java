@@ -197,7 +197,7 @@ public class Main {
                         3 - Year to Date
                         4 - Previous Year
                         5 - Search by Vendor
-                        6 - Back
+                        0 - Back
                     
                     """);
 
@@ -207,8 +207,7 @@ public class Main {
 
                         break;
 
-                    case "2":
-
+                    case "2" :
                         break;
 
                     case "3":
@@ -222,12 +221,22 @@ public class Main {
                     case "5":
 
                         break;
+
+                    case "0":
+
+                        break;
                     default:
                         System.out.println("Sorry invalid option");
 
                 }
 
             }
+        }
+        public static void searchVendor(){
+            System.out.println("Please enter vendor");
+           String vendorSearch = scanner.nextLine();
+
+
         }
 
     }
