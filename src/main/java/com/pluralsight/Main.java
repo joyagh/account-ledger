@@ -142,7 +142,7 @@ public class Main {
         ArrayList<Transaction> transactions = readFromFile();
 
             for (Transaction item : transactions) {
-                System.out.println();
+                System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
 
             }
 
