@@ -147,7 +147,7 @@ public class Main {
                     break;
 
                 case "R":
-                     Reports();
+                     reports();
                     break;
 
                 case "H":
@@ -188,7 +188,7 @@ public class Main {
         }
     }
 
-    public static void Reports(){
+    public static void reports(){
 
             while (isRunning) {
 
@@ -205,6 +205,7 @@ public class Main {
 
 
                 int choice = scanner.nextInt();
+                scanner.nextLine();
                 switch (choice) {
                     case 1 :
                         searchMonthToDate();
@@ -227,7 +228,7 @@ public class Main {
                         break;
 
                     case 0 :
-                        //Back
+                        viewLedger();
                         break;
                     default:
                         System.out.println("Sorry invalid option");
@@ -276,7 +277,7 @@ public class Main {
         LocalDate yearStart = Year.now().atDay(1);
         ArrayList<Transaction> transactions = readFromFile();
         for(Transaction item: transactions ){
-            if (item.getDate().isAfter(yearStart)){
+            if (!item.getDate().isBefore(yearStart)){
                 System.out.println(item);
             }
         }
