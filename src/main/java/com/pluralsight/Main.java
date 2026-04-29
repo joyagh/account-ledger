@@ -1,4 +1,5 @@
 package com.pluralsight;
+import javax.xml.crypto.dsig.TransformService;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -32,11 +33,11 @@ public class Main {
             String selection = scanner.nextLine().trim().toUpperCase();
             switch (selection) {
                 case "D":
-                    Deposit();
+                    deposit();
                     break;
 
                 case "P":
-                    Payment();
+                    payment();
                     break;
 
                 case "L":
@@ -95,7 +96,7 @@ public class Main {
         }
     }
 
-    static void Deposit() {
+    static void deposit() {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
         String description = "Deposit";
@@ -106,7 +107,7 @@ public class Main {
         writeToFile(date, time, description, vendor, amount);
     }
 
-    static void Payment() {
+    static void payment() {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
         String description = "Payment";
@@ -135,7 +136,8 @@ public class Main {
             String input = scanner.nextLine().trim().toUpperCase();
             switch (input) {
                 case "A":
-                    displayAll();
+                    ArrayList<Transaction> transactions = readFromFile();
+                    displayAll(transactions);
                     break;
 
                 case "D":
@@ -162,32 +164,43 @@ public class Main {
     }
 
     //display all method
-    public static void displayAll() {
-        ArrayList<Transaction> transactions = readFromFile();
+    public static void displayAll(ArrayList<Transaction> transactions) {
 
-        for (Transaction item : transactions) {
+//        for (Transaction item : transactions) {
+//            System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
+//        }
+//        System.out.println("Displaying the reversal in displaying transactions");
+//        System.out.println();
+        //reverse the way transactions are displayed in the console (to the user)
+        for (int i = transactions.size() - 1; i >= 0; i--) {
+            Transaction item = transactions.get(i);
             System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
         }
     }
 
     public static void displayDeposits() {
         ArrayList<Transaction> transactions = readFromFile();
+        ArrayList<Transaction> depTemp = new ArrayList<>();
 
         for (Transaction item : transactions) {
             if (item.getAmount() > 0) {
-                System.out.println(item);
+                depTemp.add(item);
             }
         }
+
+        displayAll(depTemp);
     }
 
     public static void displayPayments() {
         ArrayList<Transaction> transactions = readFromFile();
+        ArrayList<Transaction> payTemp = new ArrayList<>();
 
         for (Transaction item : transactions) {
             if (item.getAmount() < 0) {
-                System.out.println(item);
+                payTemp.add(item);
             }
         }
+        displayAll(payTemp);
     }
 
     public static void reports() {
@@ -230,7 +243,7 @@ public class Main {
                     searchVendor();
                     break;
                 case 6:
-                    //customSearch();
+                    customSearch();
 
                 case 0:
                     viewLedger();
@@ -303,7 +316,6 @@ public class Main {
     }
 
     public static void searchVendor() {
-        scanner.nextLine(); // clearing buffer
         System.out.println("Please enter vendor");
         String vendorSearch = scanner.nextLine();
 
@@ -336,6 +348,24 @@ public class Main {
         String amount = scanner.nextLine();// isEmpty()?
 
         ArrayList<Transaction> transactions = readFromFile();
+        ArrayList<Transaction> foundTransactions = new ArrayList<>();
+
+        if (!startDate.isEmpty() && !endDate.isEmpty()) {
+            //if we only have a start date
+            for (Transaction item : transactions) {
+                if (item.getDate().isEqual(LocalDate.parse(startDate)) || item.getDate().isAfter(LocalDate.parse(startDate)) && item.getDate().isEqual(LocalDate.parse(endDate)) || item.getDate().isBefore(LocalDate.parse(endDate))) {
+                    foundTransactions.add(item);
+                }
+            }
+
+            //check vendor
+//             for(Transaction item: foundTransactions){
+//                 if(item.getVendor() != vendor){
+//                     foundTransactions.remove(item);
+//                 }
+//             }
+        }
+        displayAll(foundTransactions);
     }
 }
 
