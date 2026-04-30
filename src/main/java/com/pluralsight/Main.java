@@ -358,12 +358,22 @@ public class Main {
 
 
             if (!startDate.isEmpty()) {
-                if (item.getDate().isBefore(LocalDate.parse(startDate))){
+                if (item.getDate().isBefore(LocalDate.parse(startDate))) {
                     match = false;
                 }
 
-//
             }
+            if (!endDate.isEmpty()) {
+                if (item.getDate().isAfter(LocalDate.parse(endDate))) {
+                    match = false;
+                }
+            }
+            if(!description.isEmpty()){
+                if(item.getDescription().toUpperCase().contains(description.toUpperCase())){
+                    match = true;
+                }
+            }
+
             if (match){
                 foundTransactions.add(item);
             }
@@ -373,6 +383,8 @@ public class Main {
     }
 
 }
+
+
 
 
 
