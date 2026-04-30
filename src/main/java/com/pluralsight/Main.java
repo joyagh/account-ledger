@@ -351,23 +351,27 @@ public class Main {
         ArrayList<Transaction> transactions = readFromFile();
         ArrayList<Transaction> foundTransactions = new ArrayList<>();
 
-        if (!startDate.isEmpty() && !endDate.isEmpty()) {
-            //if we only have a start date
-            for (Transaction item : transactions) {
-                if (item.getDate().isEqual(LocalDate.parse(startDate)) || item.getDate().isAfter(LocalDate.parse(startDate)) && item.getDate().isEqual(LocalDate.parse(endDate)) || item.getDate().isBefore(LocalDate.parse(endDate))) {
-                    foundTransactions.add(item);
+
+
+        for (Transaction item : transactions) {
+            boolean match = true;
+
+
+            if (!startDate.isEmpty()) {
+                if (item.getDate().isBefore(LocalDate.parse(startDate))){
+                    match = false;
                 }
+
+//
+            }
+            if (match){
+                foundTransactions.add(item);
             }
 
-            //check vendor
-//             for(Transaction item: foundTransactions){
-//                 if(item.getVendor() != vendor){
-//                     foundTransactions.remove(item);
-//                 }
-//             }
         }
         displayAll(foundTransactions);
     }
+
 }
 
 
