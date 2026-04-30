@@ -244,7 +244,7 @@ public class Main {
                     break;
                 case 6:
                     customSearch();
-
+                    break;
                 case 0:
                     viewLedger();
                     break;
