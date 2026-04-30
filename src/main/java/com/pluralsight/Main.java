@@ -305,6 +305,7 @@ public class Main {
     // search previous year
     public static void searchPreviousYear() {
         LocalDate yearStart = Year.now().atDay(1);
+        LocalDate lastYear = yearStart.minusYears(1);
         ArrayList<Transaction> transactions = readFromFile();
         for (Transaction item : transactions) {
             if (item.getDate().isBefore(yearStart)) {
