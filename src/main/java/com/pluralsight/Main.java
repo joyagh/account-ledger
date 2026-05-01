@@ -97,7 +97,7 @@ public class Main {
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error loading file. Please try again.");;
         }
         return transactions;
 
@@ -112,7 +112,7 @@ public class Main {
 
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Error saving transaction. Please try again. ");;
         }
     }
 
