@@ -369,10 +369,11 @@ public class Main {
                 }
             }
             if(!description.isEmpty()){
-                if(item.getDescription().toUpperCase().contains(description.toUpperCase())){
-                    match = true;
+                if(item.getDescription().toLowerCase().contains(description.toUpperCase())){
+                    match = false;
                 }
             }
+
 
             if (match){
                 foundTransactions.add(item);
