@@ -112,7 +112,8 @@ public class Main {
 
 
         } catch (IOException e) {
-            System.out.println("Error saving transaction. Please try again. ");;
+            System.out.println("Error saving transaction. Please try again. ");
+            e.printStackTrace();
         }
     }
 
@@ -444,6 +445,7 @@ public class Main {
             if (match) {
                 foundTransactions.add(item);
             }
+        }
             if (foundTransactions.isEmpty()) {
                 System.out.println(Colors.RED + "No transactions found matching your search." + Colors.RESET);
             } else {
@@ -452,7 +454,7 @@ public class Main {
 
         }
     }
-}
+
 
 
 
