@@ -1,17 +1,24 @@
 date|time|description|vendor|amount
-2025-01-27|12:24:02.033329|Deposit|Justine|5200.0
-2026-04-27|12:24:02.033329|Deposit|Justine|5200.0
-2026-04-27|12:26:05.447068|Deposit|Justine|250.0
-2026-04-27|12:27:02.591547|Deposit|Justine Oyaghiro|5290.00
-2026-04-27|12:36:44.343399|Payment|Justine|-3200.00
-2026-04-27|16:05:41.573913|Deposit|Jude|23456.00
-2026-04-27|16:06:10.023547|Payment|James|-356.00
-2026-04-28|09:26:36.330317|Deposit|Justine|678.97
-2026-04-28|10:14:06.991211|Deposit|Justine|4568394.00
-2026-04-28|13:37:06.275834|Deposit|Kim|45387565.00
-2026-04-28|13:37:19.978354|Payment|Leo|-67728.00
-2026-04-29|11:41:29.460775|Deposit|khloe|4546.00
-2026-04-29|11:42:53.938045|Payment|dream|-385793.00
-2026-04-29|12:03:36.483610|Deposit|hfh|378.00
-2026-04-30|14:45:27.268139|Deposit|justineeojb|387466.00
-2026-04-30|14:45:42.779618|Payment|dfhahhg|-34767.00
+2024-01-15|09:00|Deposit|Salary Inc|3200.00
+2024-02-03|10:30|Payment|Amazon|-145.99
+2024-03-18|14:00|Deposit|Freelance Client|-850.00
+2024-04-22|11:00|Payment|Netflix|-15.99
+2024-05-10|08:45|Deposit|Salary Inc|3200.00
+2024-06-05|13:00|Payment|Whole Foods|-212.47
+2024-07-19|09:30|Payment|AT&T|-89.00
+2024-08-01|10:00|Deposit|Salary Inc|3200.00
+2024-09-14|15:00|Payment|Apple Store|-999.00
+2024-10-07|11:30|Deposit|Tax Refund|1240.00
+2024-11-25|14:30|Payment|Best Buy|-349.99
+2024-12-01|09:00|Deposit|Salary Inc|3200.00
+2024-12-20|16:00|Payment|Target|-187.63
+2025-02-14|10:00|Payment|Valentines Dinner|-124.50
+2025-04-01|09:00|Deposit|Salary Inc|3500.00
+2025-07-04|12:00|Payment|Party City|-67.89
+2025-11-01|09:00|Deposit|Salary Inc|3500.00
+2026-01-15|10:00|Deposit|Salary Inc|3500.00
+2026-03-22|14:00|Payment|Spotify|-10.99
+2026-04-30|09:00|Deposit|Jude|500.00
+2026-04-30|22:00|Deposit|Justine O|4567.00
+2026-04-30|22:01|Deposit|James|6789.00
+2026-04-30|22:03|Deposit|Zaire|7890.00

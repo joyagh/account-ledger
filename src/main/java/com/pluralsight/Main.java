@@ -13,7 +13,21 @@ public class Main {
     static boolean isRunning = true;
 
     public static void main(String[] args) {
+        splashScreen();
         displayHomeMenu();
+    }
+
+    static void splashScreen() {
+        System.out.println(Colors.GREEN + """
+                
+                ╔═══════════════════════════════════════════════╗
+                ║   💰  CASH MONEY ACCOUNT SERVICES  💰         ║
+                ║         Your money, organized.                ║
+                ╚═══════════════════════════════════════════════╝
+                """ + Colors.RESET);
+        System.out.println(Colors.YELLOW + "        💰  Your money, organized. Welcome to CMAS.  💰" + Colors.RESET);
+        System.out.println(Colors.CYAN + "        ════════════════════════════════════════════" + Colors.RESET);
+        System.out.println();
     }
 
     static void displayHomeMenu() {
@@ -34,14 +48,20 @@ public class Main {
             switch (selection) {
                 case "D":
                     deposit();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case "P":
                     payment();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case "L":
                     viewLedger();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case "X":
@@ -98,18 +118,19 @@ public class Main {
 
     static void deposit() {
         LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
+        LocalTime time = LocalTime.now().withSecond(0).withNano(0);
         String description = "Deposit";
         System.out.println("Please Enter Depositor's Name: ");
         String vendor = scanner.nextLine();
         System.out.println("Please Enter Amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
         writeToFile(date, time, description, vendor, amount);
+        System.out.println("\uD83D\uDCB0 CHA-CHING! \uD83D\uDCB0");
     }
 
     static void payment() {
         LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
+        LocalTime time = LocalTime.now().withSecond(0).withNano(0);
         String description = "Payment";
         System.out.println("Please Enter Payee: ");
         String vendor = scanner.nextLine();
@@ -122,6 +143,8 @@ public class Main {
     public static void viewLedger() {
 
         while (isRunning) {
+            System.out.println(Colors.YELLOW + "💰 Cash Money Account Services — Ledger" + Colors.RESET);
+            System.out.println(Colors.CYAN + "════════════════════════════════════════════" + Colors.RESET);
 
             System.out.println("""
                     Welcome to your Acct Ledger! Choose from the following
@@ -138,25 +161,33 @@ public class Main {
                 case "A":
                     ArrayList<Transaction> transactions = readFromFile();
                     displayAll(transactions);
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case "D":
                     displayDeposits();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case "P":
                     displayPayments();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case "R":
                     reports();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case "H":
                     displayHomeMenu();
                     break;
                 default:
-                    System.out.println("Sorry invalid option");
+                    System.out.println(Colors.RED + "Sorry, invalid option." + Colors.RESET);
 
             }
 
@@ -165,6 +196,10 @@ public class Main {
 
     //display all method
     public static void displayAll(ArrayList<Transaction> transactions) {
+        System.out.println(Colors.CYAN +
+                String.format("%-12s %-10s %-20s %-15s %10s",
+                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT") + Colors.RESET);
+        System.out.println(Colors.CYAN + "═".repeat(72) + Colors.RESET);
 
 //        for (Transaction item : transactions) {
 //            System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
@@ -174,8 +209,16 @@ public class Main {
         //reverse the way transactions are displayed in the console (to the user)
         for (int i = transactions.size() - 1; i >= 0; i--) {
             Transaction item = transactions.get(i);
-            System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
+            String color = item.getAmount() >= 0 ? Colors.GREEN : Colors.RED;
+//            System.out.println(item.getDate() + "|" + item.getTime() + "|" + item.getDescription() + "|" + item.getVendor() + "|" + item.getAmount());
+            System.out.println(color + String.format("%-12s %-10s %-20s %-15s %10s",
+                    item.getDate(),
+                    item.getTime(),
+                    item.getDescription(),
+                    item.getVendor(),
+                    String.format("$%.2f", item.getAmount())) + Colors.RESET);
         }
+        System.out.println();
     }
 
     public static void displayDeposits() {
@@ -206,6 +249,8 @@ public class Main {
     public static void reports() {
 
         while (isRunning) {
+            System.out.println(Colors.YELLOW + "💰 Cash Money Account Services — Reports" + Colors.RESET);
+            System.out.println(Colors.CYAN + "════════════════════════════════════════════" + Colors.RESET);
 
             System.out.println("""
                     Welcome to your Acct Ledger! Choose from the following
@@ -225,31 +270,43 @@ public class Main {
             switch (choice) {
                 case 1:
                     searchMonthToDate();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case 2:
                     searchPreviousMonth();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case 3:
                     searchYearToDate();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case 4:
                     searchPreviousYear();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
 
                 case 5:
                     searchVendor();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
                 case 6:
                     customSearch();
+                    System.out.println("\nPress enter to continue..");
+                    scanner.nextLine();
                     break;
                 case 0:
                     viewLedger();
                     break;
                 default:
-                    System.out.println("Sorry invalid option");
+                    System.out.println(Colors.RED + "Sorry, invalid option." + Colors.RESET);
 
             }
 
@@ -352,7 +409,6 @@ public class Main {
         ArrayList<Transaction> foundTransactions = new ArrayList<>();
 
 
-
         for (Transaction item : transactions) {
             boolean match = true;
 
@@ -368,21 +424,34 @@ public class Main {
                     match = false;
                 }
             }
-            if(!description.isEmpty()){
-                if(item.getDescription().toLowerCase().contains(description.toUpperCase())){
+            if (!description.isEmpty()) {
+                if (!item.getDescription().toUpperCase().contains(description.toUpperCase())) {
+                    match = false;
+                }
+            }
+            if (!vendor.isEmpty()) {
+                if (!item.getVendor().toUpperCase().contains(vendor.toUpperCase())) {
+                    match = false;
+                }
+            }
+            if (!amount.isEmpty()) {
+                if (item.getAmount() != Double.parseDouble(amount)) {
                     match = false;
                 }
             }
 
 
-            if (match){
+            if (match) {
                 foundTransactions.add(item);
+            }
+            if (foundTransactions.isEmpty()) {
+                System.out.println(Colors.RED + "No transactions found matching your search." + Colors.RESET);
+            } else {
+                displayAll(foundTransactions);
             }
 
         }
-        displayAll(foundTransactions);
     }
-
 }
 
 
